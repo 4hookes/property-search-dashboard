@@ -83,104 +83,162 @@ export default function AddPropertyModal({
   }
 
   const inputCls =
-    "w-full border border-charcoal/20 bg-white rounded-sm px-3 py-2 text-sm focus:outline-none focus:border-amber transition-colors";
-  const labelCls = "block text-body/50 text-xs tracking-broadsheet uppercase mb-1.5";
+    "w-full bg-transparent border-b border-white/20 pb-2 text-cream text-sm placeholder-white/25 focus:outline-none focus:border-amber transition-colors";
+  const labelCls = "block text-amber/70 text-xs tracking-kicker uppercase mb-2";
+  const sectionLabel = "text-white/30 text-xs tracking-broadsheet uppercase mb-4 flex items-center gap-3";
 
   return (
-    <div className="fixed inset-0 bg-charcoal/70 flex items-center justify-center z-50 px-4">
-      <div className="bg-cream border border-charcoal/10 rounded-sm w-full max-w-2xl max-h-[90vh] overflow-y-auto">
-        <div className="sticky top-0 bg-cream border-b border-charcoal/10 px-6 py-4 flex items-center justify-between">
-          <h2 className="text-charcoal text-xl font-semibold" style={{ fontFamily: "var(--font-dm-serif)" }}>
-            Add Listing
-          </h2>
-          <button onClick={onClose} className="text-body/40 hover:text-body text-xl">×</button>
+    <div className="fixed inset-0 bg-charcoal-deep/80 backdrop-blur-sm flex items-center justify-center z-50 px-4">
+      <div className="bg-charcoal border border-white/10 rounded-sm w-full max-w-2xl max-h-[90vh] overflow-y-auto shadow-premium-lg">
+
+        {/* Header */}
+        <div className="sticky top-0 bg-charcoal border-b border-white/10 px-7 py-5 flex items-center justify-between z-10">
+          <div>
+            <p className="text-amber text-xs tracking-kicker uppercase mb-1">EastCondos</p>
+            <h2 className="text-cream text-xl" style={{ fontFamily: "var(--font-dm-serif)" }}>
+              Add New Listing
+            </h2>
+          </div>
+          <button
+            onClick={onClose}
+            className="w-8 h-8 flex items-center justify-center rounded-sm border border-white/10 text-cream/40 hover:text-cream hover:border-white/30 transition-colors text-lg"
+          >
+            ×
+          </button>
         </div>
 
-        <form onSubmit={handleSubmit} className="p-6 space-y-5">
-          <div className="grid grid-cols-2 gap-4">
-            <div>
-              <label className={labelCls}>Project / Estate</label>
-              <input className={inputCls} value={form.project_name} onChange={(e) => set("project_name", e.target.value)} placeholder="The Jovell" />
-            </div>
-            <div>
-              <label className={labelCls}>Street Address</label>
-              <input className={inputCls} value={form.street_address} onChange={(e) => set("street_address", e.target.value)} placeholder="27 Flora Drive" />
-            </div>
-            <div>
-              <label className={labelCls}>Price (S$)</label>
-              <input className={inputCls} value={form.price} onChange={(e) => set("price", e.target.value)} placeholder="1,360,000" />
-            </div>
-            <div>
-              <label className={labelCls}>Property Type</label>
-              <select className={inputCls} value={form.property_type} onChange={(e) => set("property_type", e.target.value)}>
-                <option>Condominium</option>
-                <option>HDB</option>
-                <option>Executive Condo</option>
-                <option>Landed</option>
-              </select>
-            </div>
-            <div>
-              <label className={labelCls}>Beds</label>
-              <input className={inputCls} type="number" value={form.beds} onChange={(e) => set("beds", e.target.value)} placeholder="3" />
-            </div>
-            <div>
-              <label className={labelCls}>Baths</label>
-              <input className={inputCls} type="number" value={form.baths} onChange={(e) => set("baths", e.target.value)} placeholder="2" />
-            </div>
-            <div>
-              <label className={labelCls}>Size (sqft)</label>
-              <input className={inputCls} value={form.size_sqft} onChange={(e) => set("size_sqft", e.target.value)} placeholder="904" />
-            </div>
-            <div>
-              <label className={labelCls}>PSF</label>
-              <input className={inputCls} value={form.psf} onChange={(e) => set("psf", e.target.value)} placeholder="1504" />
-            </div>
-            <div>
-              <label className={labelCls}>Floor Level</label>
-              <input className={inputCls} value={form.floor_level} onChange={(e) => set("floor_level", e.target.value)} placeholder="High floor" />
-            </div>
-            <div>
-              <label className={labelCls}>Tenanted</label>
-              <input className={inputCls} value={form.tenanted} onChange={(e) => set("tenanted", e.target.value)} placeholder="Vacant / Tenanted" />
-            </div>
-            <div>
-              <label className={labelCls}>Agent Name</label>
-              <input className={inputCls} value={form.agent_name} onChange={(e) => set("agent_name", e.target.value)} placeholder="John Tan" />
-            </div>
-            <div>
-              <label className={labelCls}>Agent Number</label>
-              <input className={inputCls} value={form.agent_number} onChange={(e) => set("agent_number", e.target.value)} placeholder="9123 4567" />
-            </div>
-          </div>
+        <form onSubmit={handleSubmit} className="px-7 py-6 space-y-7">
 
+          {/* Section 1 — Property */}
           <div>
-            <label className={labelCls}>PropertyGuru Link</label>
-            <input className={inputCls} value={form.property_link} onChange={(e) => set("property_link", e.target.value)} placeholder="https://www.propertyguru.com.sg/..." />
+            <p className={sectionLabel}>
+              <span className="w-5 h-px bg-white/20 inline-block" />
+              Property
+            </p>
+            <div className="grid grid-cols-2 gap-x-8 gap-y-5">
+              <div>
+                <label className={labelCls}>Project / Estate</label>
+                <input className={inputCls} value={form.project_name} onChange={(e) => set("project_name", e.target.value)} placeholder="The Jovell" />
+              </div>
+              <div>
+                <label className={labelCls}>Street Address</label>
+                <input className={inputCls} value={form.street_address} onChange={(e) => set("street_address", e.target.value)} placeholder="27 Flora Drive" />
+              </div>
+              <div>
+                <label className={labelCls}>Asking Price (S$)</label>
+                <input className={inputCls} value={form.price} onChange={(e) => set("price", e.target.value)} placeholder="1,360,000" />
+              </div>
+              <div>
+                <label className={labelCls}>Property Type</label>
+                <select
+                  className="w-full bg-transparent border-b border-white/20 pb-2 text-cream text-sm focus:outline-none focus:border-amber transition-colors"
+                  value={form.property_type}
+                  onChange={(e) => set("property_type", e.target.value)}
+                  style={{ colorScheme: "dark" }}
+                >
+                  <option value="Condominium" className="bg-charcoal">Condominium</option>
+                  <option value="HDB" className="bg-charcoal">HDB</option>
+                  <option value="Executive Condo" className="bg-charcoal">Executive Condo</option>
+                  <option value="Landed" className="bg-charcoal">Landed</option>
+                </select>
+              </div>
+            </div>
           </div>
+
+          {/* Section 2 — Details */}
           <div>
-            <label className={labelCls}>Summary / Notes</label>
-            <textarea
-              className={`${inputCls} min-h-[80px] resize-y`}
-              value={form.summary}
-              onChange={(e) => set("summary", e.target.value)}
-              placeholder="Key highlights of this listing…"
-            />
+            <p className={sectionLabel}>
+              <span className="w-5 h-px bg-white/20 inline-block" />
+              Details
+            </p>
+            <div className="grid grid-cols-3 gap-x-8 gap-y-5">
+              <div>
+                <label className={labelCls}>Beds</label>
+                <input className={inputCls} type="number" value={form.beds} onChange={(e) => set("beds", e.target.value)} placeholder="3" />
+              </div>
+              <div>
+                <label className={labelCls}>Baths</label>
+                <input className={inputCls} type="number" value={form.baths} onChange={(e) => set("baths", e.target.value)} placeholder="2" />
+              </div>
+              <div>
+                <label className={labelCls}>Size (sqft)</label>
+                <input className={inputCls} value={form.size_sqft} onChange={(e) => set("size_sqft", e.target.value)} placeholder="904" />
+              </div>
+              <div>
+                <label className={labelCls}>PSF</label>
+                <input className={inputCls} value={form.psf} onChange={(e) => set("psf", e.target.value)} placeholder="1,504" />
+              </div>
+              <div>
+                <label className={labelCls}>Floor Level</label>
+                <input className={inputCls} value={form.floor_level} onChange={(e) => set("floor_level", e.target.value)} placeholder="High floor" />
+              </div>
+              <div>
+                <label className={labelCls}>Tenancy</label>
+                <input className={inputCls} value={form.tenanted} onChange={(e) => set("tenanted", e.target.value)} placeholder="Vacant / Tenanted" />
+              </div>
+            </div>
           </div>
 
-          {error && <p className="text-red-500 text-sm">{error}</p>}
+          {/* Section 3 — Agent */}
+          <div>
+            <p className={sectionLabel}>
+              <span className="w-5 h-px bg-white/20 inline-block" />
+              Agent
+            </p>
+            <div className="grid grid-cols-2 gap-x-8 gap-y-5">
+              <div>
+                <label className={labelCls}>Agent Name</label>
+                <input className={inputCls} value={form.agent_name} onChange={(e) => set("agent_name", e.target.value)} placeholder="John Tan" />
+              </div>
+              <div>
+                <label className={labelCls}>Agent Number</label>
+                <input className={inputCls} value={form.agent_number} onChange={(e) => set("agent_number", e.target.value)} placeholder="9123 4567" />
+              </div>
+            </div>
+          </div>
 
-          <div className="flex gap-3 pt-2">
+          {/* Section 4 — Links & Notes */}
+          <div>
+            <p className={sectionLabel}>
+              <span className="w-5 h-px bg-white/20 inline-block" />
+              Links &amp; Notes
+            </p>
+            <div className="space-y-5">
+              <div>
+                <label className={labelCls}>PropertyGuru Link</label>
+                <input className={inputCls} value={form.property_link} onChange={(e) => set("property_link", e.target.value)} placeholder="https://www.propertyguru.com.sg/..." />
+              </div>
+              <div>
+                <label className={labelCls}>Summary / Highlights</label>
+                <textarea
+                  className="w-full bg-white/5 border border-white/10 rounded-sm px-4 py-3 text-cream text-sm placeholder-white/25 focus:outline-none focus:border-amber transition-colors resize-none min-h-[80px]"
+                  value={form.summary}
+                  onChange={(e) => set("summary", e.target.value)}
+                  placeholder="Key highlights of this listing…"
+                />
+              </div>
+            </div>
+          </div>
+
+          {error && (
+            <div className="bg-red-500/10 border border-red-500/30 rounded-sm px-4 py-2.5">
+              <p className="text-red-400 text-sm">{error}</p>
+            </div>
+          )}
+
+          {/* Actions */}
+          <div className="flex gap-3 pt-2 border-t border-white/10">
             <button
               type="button"
               onClick={onClose}
-              className="flex-1 border border-charcoal/20 text-body text-sm py-2.5 rounded-sm hover:bg-paper transition-colors"
+              className="flex-1 border border-white/15 text-cream/60 hover:text-cream hover:border-white/30 text-sm py-3 rounded-sm transition-colors"
             >
               Cancel
             </button>
             <button
               type="submit"
               disabled={loading}
-              className="flex-1 bg-charcoal text-cream text-sm py-2.5 rounded-sm hover:bg-charcoal-light transition-colors disabled:opacity-50"
+              className="flex-1 bg-amber hover:bg-amber-light text-charcoal font-semibold text-sm py-3 rounded-sm transition-colors disabled:opacity-40"
             >
               {loading ? "Adding…" : "Add Listing"}
             </button>
