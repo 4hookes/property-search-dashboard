@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  turbopack: { root: "C:/Users/jimue/Desktop/GitHub/property-search-dashboard" },
 };
 
 export default nextConfig;
